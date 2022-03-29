@@ -1,0 +1,9 @@
+rooms: {
+      type: S.INTEGER,
+    },
+    dimensions: {
+      type: S.INTEGER,
+    },
+    garage: {
+      type: S.BOOLEAN,
+    },
