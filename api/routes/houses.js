@@ -18,12 +18,27 @@ router.post("/", (req, res) => {
   /* console.log("POST DE HOUSE");
   res.sendStatus(200) */
 });
-//Busca una casa por nombre
+//Busca una casa por id
 router.get("/find/:id", (req, res) => {
   Houses.findOne({ where: { id: req.params.id } }).then((house) => {
     res.status(200).send(house);
   });
 });
+//editar casa por id
+router.put('/edit/:id',(req, res) => {
+  Houses.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+    returning: true,
+  })
+    .then(([house]) => {
+      res.send(house[0]);
+    })
+})
+
+
+
 //Borra una casa
 router.delete("/delete/:id", (req, res) => {
   Houses.destroy({
