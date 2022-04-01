@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
@@ -12,10 +12,28 @@ import {
   Heading,
   Flex,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLoginRequest } from "../store/users";
 
 export default function Login() {
   const [show, setShow] = React.useState(false)
   const handleClick = () => setShow(!show)
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const onChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(setLoginRequest(form));
+    navigate("/");
+  };
   return (
     <Flex
             minH={'80vh'}
@@ -29,6 +47,7 @@ export default function Login() {
                        Ingresar 
                     </Heading>
                 </Stack>
+                <form onSubmit={onSubmit}>
                 <Box
                     rounded={'lg'}
                     bg={useColorModeValue('white', 'gray.700')}
@@ -40,13 +59,15 @@ export default function Login() {
           
                     <FormControl id="email" isRequired>
                         <FormLabel htmlFor="email">Email</FormLabel>
-                        <Input id="email" type="email" />
+                        <Input id="email" type="email"name="email" onChange={onChange}/>
                     </FormControl>
                     <FormControl id="password" isRequired>
                         <FormLabel htmlFor="password" pt={5}>Contraseña</FormLabel>
                         <InputGroup >
                             <Input
                                 id="id"
+                                name="password"
+                                onChange={onChange}
                                 type={show ? 'text' : 'password'}
                                 
 
@@ -68,6 +89,7 @@ export default function Login() {
                     </Button>
 
                 </Box>
+                </form>
             </Stack>
         </Flex>
   );

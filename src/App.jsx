@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Home from "./components/Home";
 function App() {
   return (
     <div>
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="*" element={<Navigate replace to="/" />} />
 
       </Routes>
 
