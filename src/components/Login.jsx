@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link as ReachLink } from "react-router-dom";
+
 import {
   FormControl,
   FormLabel,
@@ -11,6 +13,7 @@ import {
   Box,
   Heading,
   Flex,
+  Link,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -87,9 +90,12 @@ export default function Login() {
                     >
                         Inicio
                     </Button>
-
+                    
                 </Box>
                 </form>
+                <Link as={ReachLink} to="/register">
+          Aun no estas registrado?
+        </Link>
             </Stack>
         </Flex>
   );
