@@ -45,6 +45,7 @@ export default function Login() {
   }, [user]);
   return (
     <Flex
+            pt={20}
             minH={'80vh'}
             align={'center'}
             justify={'center'}

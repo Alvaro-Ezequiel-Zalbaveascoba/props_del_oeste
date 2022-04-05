@@ -6,21 +6,28 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Welcome from "./components/Welcome";
+import { Box, Center } from "@chakra-ui/react";
+
 function App() {
   return (
-    <div>
+    <Box >
       <NavBar />
+      <Center>
 
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Welcome" element={<Welcome />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/Welcome" element={<Welcome />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
 
-      </Routes>
+        </Routes>
 
-    </div>
+      </Center>
+
+
+
+    </Box>
   );
 }
 

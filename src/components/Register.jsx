@@ -38,13 +38,15 @@ export default function Register() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(setRegisterRequest(form));
-        navigate("/welcome");
+        dispatch(setRegisterRequest(form)).then(() => navigate("/welcome"))
+            ;
     };
+
 
 
     return (
         <Flex
+            pt={20}
             minH={'90vh'}
             align={'center'}
             justify={'center'}

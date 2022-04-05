@@ -1,8 +1,12 @@
+import { Box } from '@chakra-ui/react';
 import React from 'react'
-
+import GridH from "../commons/GridH";
 export default function Home() {
-   
+
   return (
-    <div><h1>Home</h1></div>
+    <Box pt={20}>
+      <GridH />
+
+    </Box>
   )
 }
