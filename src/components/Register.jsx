@@ -39,7 +39,7 @@ export default function Register() {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(setRegisterRequest(form));
-        navigate("/login");
+        navigate("/welcome");
     };
 
 

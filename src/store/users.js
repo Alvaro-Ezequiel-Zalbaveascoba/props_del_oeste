@@ -1,6 +1,6 @@
-import {createAsyncThunk,createReducer} from "@reduxjs/toolkit";
+import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const intialState = {};
 export const setRegisterRequest = createAsyncThunk("REGISTER", (form) => {
     return axios.post("/api/users", form).then((res) => res.data);
 });
@@ -14,8 +14,8 @@ export const setLogoutRequest = createAsyncThunk("LOGOUT", () => {
     return axios.post("/api/log/out").then((res) => res.data);
 })
 
-const usersReducer=createReducer({},{
-    [setRegisterRequest.fulfilled]:(state,action)=>action.payload,
+const usersReducer = createReducer(intialState, {
+    [setRegisterRequest.fulfilled]: (state, action) => action.payload,
     [setLoginRequest.fulfilled]: (state, action) => action.payload,
     [setUserMeRequest.fulfilled]: (state, action) => action.payload,
     [setLogoutRequest.fulfilled]: (state, action) => action.payload,

@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import Welcome from "./components/Welcome";
 function App() {
   return (
     <div>
@@ -13,7 +14,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/Welcome" element={<Welcome />} />
         <Route path="*" element={<Navigate replace to="/" />} />
 
       </Routes>

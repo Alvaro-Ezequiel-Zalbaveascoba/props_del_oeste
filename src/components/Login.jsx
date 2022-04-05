@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link as ReachLink } from "react-router-dom";
 
 import {
@@ -16,7 +16,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLoginRequest } from "../store/users";
 
 export default function Login() {
@@ -24,6 +24,9 @@ export default function Login() {
   const handleClick = () => setShow(!show)
   let navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.users);
+
 
   const [form, setForm] = useState({
     email: "",
@@ -35,8 +38,11 @@ export default function Login() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(setLoginRequest(form));
-    navigate("/");
+    
   };
+  useEffect(() => {
+    navigate(!user.id ?"/login":"/welcome")
+  }, [user]);
   return (
     <Flex
             minH={'80vh'}
