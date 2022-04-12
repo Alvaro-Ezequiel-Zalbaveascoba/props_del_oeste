@@ -41,8 +41,8 @@ export default function Login() {
     
   };
   useEffect(() => {
-    navigate(!user.id ?"/login":"/welcome")
-  }, [user]);
+    navigate(!user.id ?"/login":"/")
+  }, [navigate, user]);
   return (
     <Flex
             pt={20}

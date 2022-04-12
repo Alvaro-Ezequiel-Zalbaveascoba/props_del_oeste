@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { TypesOfHouses } = require("../models/index");
+const { Typesofhouses } = require("../models/index");
 
 //trae todas las casas
 router.get("/", (req, res) => {
-  TypesOfHouses.findAll().then((type) => {
+  Typesofhouses.findAll().then((type) => {
     res.send(type);
   });
   /* console.log("GET DE HOUSE");
@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 });
 //crea una casa
 router.post("/", (req, res) => {
-  TypesOfHouses.create(req.body).then((type) => {
+  Typesofhouses.create(req.body).then((type) => {
     res.status(201).send(type);
   });
   /* console.log("POST DE HOUSE");
@@ -20,13 +20,13 @@ router.post("/", (req, res) => {
 });
 //Busca una casa por id
 router.get("/find/:id", (req, res) => {
-  TypesOfHouses.findOne({ where: { id: req.params.id } }).then((type) => {
+  Typesofhouses.findOne({ where: { id: req.params.id } }).then((type) => {
     res.status(200).send(type);
   });
 });
 //editar casa por id
 router.put('/edit/:id',(req, res) => {
-  TypesOfHouses.update(req.body, {
+  Typesofhouses.update(req.body, {
     where: {
       id: req.params.id,
     },
@@ -41,7 +41,7 @@ router.put('/edit/:id',(req, res) => {
 
 //Borra una casa
 router.delete("/delete/:id", (req, res) => {
-  TypesOfHouses.destroy({
+  Typesofhouses.destroy({
     where: {
       id: req.params.id,
     },

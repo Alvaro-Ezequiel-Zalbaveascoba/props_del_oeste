@@ -13,7 +13,7 @@ TypesOfHouses.init(
   {
     sequelize: db,
     timestamps: false,
-    modelName: "typesOfHouses",
+    modelName: "typesofhouses",
   }
 );
 

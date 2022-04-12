@@ -24,6 +24,11 @@ router.get("/find/:id", (req, res) => {
     res.status(200).send(house);
   });
 });
+router.get("/typesofhouse/:id", (req, res) => {
+  Houses.findAll({ where: { typesofhouseId:req.params.id} }).then((houses) => {
+    res.status(200).send(houses);
+  });
+});
 //editar casa por id
 router.put('/edit/:id',(req, res) => {
   Houses.update(req.body, {

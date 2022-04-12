@@ -38,7 +38,7 @@ export default function Register() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(setRegisterRequest(form)).then(() => navigate("/welcome"))
+        dispatch(setRegisterRequest(form)).then(() => navigate("/"))
             ;
     };
 

@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
   /* console.log("POST DE USERS");
   res.sendStatus(200); */
 });
-//Busca un usuario por nombre
+//Busca un usuario por id
 router.get("/find/:id", (req, res) => {
   Users.findOne({ where: { id: req.params.id } }).then((user) => {
     res.status(200).send(user);

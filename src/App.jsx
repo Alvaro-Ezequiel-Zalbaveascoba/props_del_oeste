@@ -5,28 +5,36 @@ import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
-import Welcome from "./components/Welcome";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, Flex } from "@chakra-ui/react";
+import DetailsHouse from "./commons/DetailsHouse";
+import CheckOut from "./commons/CheckOut";
 
 function App() {
   return (
-    <Box >
-      <NavBar />
-      <Center>
+    <Box>
+      <Flex>
+        <Box>
+          <NavBar />
+        </Box>
+      </Flex>
+      <Box  >
+        <Center>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/checkout" element={<CheckOut/>}/>
+          
+            <Route path="/houses/:id" element={<DetailsHouse/>}/>
 
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/Welcome" element={<Welcome />} />
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate replace to="/" />} />
-
-        </Routes>
-
-      </Center>
 
 
-
+            <Route path="/casas"element={<Home/>} />
+            <Route path="/ph"element={<Home/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Navigate replace to="/" />} />
+          </Routes>
+        </Center>
+      </Box>
     </Box>
   );
 }
