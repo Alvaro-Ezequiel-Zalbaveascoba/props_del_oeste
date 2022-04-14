@@ -7,16 +7,12 @@ router.get("/", (req, res) => {
   Messages.findAll().then((message) => {
     res.send(message);
   });
-  /* console.log("GET DE messageS");
-  res.sendStatus(200); */
 });
 //crea un usuario
 router.post("/", (req, res) => {
   Messages.create(req.body).then((message) => {
     res.status(201).send(message);
   });
-  /* console.log("POST DE messageS");
-  res.sendStatus(200); */
 });
 //Busca un usuario por id
 router.get("/find/:id", (req, res) => {

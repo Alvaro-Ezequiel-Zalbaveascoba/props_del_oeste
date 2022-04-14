@@ -3,7 +3,7 @@ import React from "react";
 import {
   FormControl,
   FormLabel,
-  Input,  
+  Input,
   Button,
   HStack,
   Box,
@@ -27,7 +27,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CheckOut() {
   const me = useSelector((state) => state.me)
-  const houses= useSelector((state)=>state.houses)
+  const houses = useSelector((state) => state.houses)
   const dispatch = useDispatch();
   let navigate = useNavigate();
   const [form, setForm] = useState({
@@ -36,18 +36,17 @@ export default function CheckOut() {
     email: me.email,
     movil: 0,
     message: "Hola me interesa esta propiedad me gustaria que me contacten",
-    houseId:houses.id,
-    interestedId:me.id
+    houseId: houses.id,
+    interestedId: me.id
   });
   const onChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    console.log(form);
   };
 
   const onSubmit = (e) => {
-      e.preventDefault();
-      dispatch(setMessagesRequest(form)).then(() => navigate("/accomplished"))
-          ;
+    e.preventDefault();
+    dispatch(setMessagesRequest(form)).then(() => navigate("/accomplished"))
+      ;
   };
   return (
     <Flex mt={55}>
@@ -96,9 +95,9 @@ export default function CheckOut() {
                     onChange={onChange} />
                 </FormControl>
                 <FormControl id="movil" isRequired>
-                  <FormLabel  pt={5}>Telefono</FormLabel>
+                  <FormLabel pt={5}>Telefono</FormLabel>
                   <NumberInput >
-                    <NumberInputField name="movil" placeholder="+5411********" onChange={onChange}/>
+                    <NumberInputField name="movil" placeholder="+5411********" onChange={onChange} />
                     <NumberInputStepper>
 
                     </NumberInputStepper>

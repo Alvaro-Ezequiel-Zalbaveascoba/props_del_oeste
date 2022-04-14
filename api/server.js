@@ -6,9 +6,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
-//const models=require("./models/index")
 const routes = require("../api/routes/index");
-const User= require("./models/users");
+const User = require("./models/users");
 const db = require("./db");
 
 app.use(cors());

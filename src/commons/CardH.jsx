@@ -3,20 +3,17 @@ import { Badge, Box, Image, Text } from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom';
 
 
-export default function CardH({house}) {
-    /* console.log("ESTA ES LA HOUSE",house); */
-    
+export default function CardH({ house }) {
     const navigate = useNavigate();
-  
     const handleClick = () => {
-      navigate(`/houses/${house.id}`);
+        navigate(`/houses/${house.id}`);
     };
 
-    
+
     return (
-        
-        <Box  boxSize="sm" h="82%" borderWidth='1px' borderRadius='lg' overflow='hidden' onClick={handleClick}maxW={'8xl'}>
-            <Image objectFit='cover'boxSize="50%"w="100%"src={house.img} alt={house.img} />
+
+        <Box boxSize="sm" h="82%" borderWidth='1px' borderRadius='lg' overflow='hidden' onClick={handleClick} maxW={'8xl'}>
+            <Image objectFit='cover' boxSize="50%" w="100%" src={house.img} alt={house.img} />
 
             <Box p='6'>
                 <Box display='flex' alignItems='baseline'>
@@ -31,7 +28,7 @@ export default function CardH({house}) {
                         textTransform='uppercase'
                         ml='2'
                     >
-                        {house.typesofhouseId===1?"Casa":"Ph"} - {house.available===true?"Disponible":"No Disponible"}
+                        {house.typesofhouseId === 1 ? "Casa" : "Ph"} - {house.available === true ? "Disponible" : "No Disponible"}
                     </Box>
                 </Box>
 
@@ -53,7 +50,7 @@ export default function CardH({house}) {
                 </Box>
 
                 <Box mt='2'>
-                   <Text align={'center'}>{house.truncate}</Text> 
+                    <Text align={'center'}>{house.truncate}</Text>
                 </Box>
             </Box>
         </Box>

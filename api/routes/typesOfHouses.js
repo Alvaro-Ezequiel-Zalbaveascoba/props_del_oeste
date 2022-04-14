@@ -7,16 +7,12 @@ router.get("/", (req, res) => {
   Typesofhouses.findAll().then((type) => {
     res.send(type);
   });
-  /* console.log("GET DE HOUSE");
-  res.sendStatus(200) */
 });
 //crea una casa
 router.post("/", (req, res) => {
   Typesofhouses.create(req.body).then((type) => {
     res.status(201).send(type);
   });
-  /* console.log("POST DE HOUSE");
-  res.sendStatus(200) */
 });
 //Busca una casa por id
 router.get("/find/:id", (req, res) => {

@@ -28,66 +28,50 @@ export default function NavBar() {
         </Link>
       </Box>
       <Spacer />
-      {me.admin?<Box mt={2}><Menu>
-          <MenuButton bg="brand.white"as={Button} rightIcon={<ChevronDownIcon />}>
-            Admin
-          </MenuButton>
-          <MenuList>
-            <Link as={ReachLink} to="/users">
-              <MenuItem>Usuarios</MenuItem>
-
-            </Link>
-            <Link as={ReachLink} to="/messages">
-              <MenuItem>Mensajes</MenuItem>
-
-            </Link>
-
-          </MenuList>
-        </Menu>
-        </Box>:<></>}
-        <Spacer />
+      {me.admin ? <Box mt={2}><Menu>
+        <MenuButton bg="brand.white" as={Button} rightIcon={<ChevronDownIcon />}>
+          Admin
+        </MenuButton>
+        <MenuList>
+          <Link as={ReachLink} to="/users">
+            <MenuItem>Usuarios</MenuItem>
+          </Link>
+          <Link as={ReachLink} to="/messages">
+            <MenuItem>Mensajes</MenuItem>
+          </Link>
+        </MenuList>
+      </Menu>
+      </Box> : <></>}
+      <Spacer />
       <Box mt={2}>
         <Menu>
-          <MenuButton bg="brand.white"as={Button} rightIcon={<ChevronDownIcon />}>
+          <MenuButton bg="brand.white" as={Button} rightIcon={<ChevronDownIcon />}>
             Categorias
           </MenuButton>
           <MenuList>
             <Link as={ReachLink} to="/">
               <MenuItem>Todas</MenuItem>
-
             </Link>
             <Link as={ReachLink} to="/casas">
               <MenuItem>Casas</MenuItem>
-
             </Link>
             <Link as={ReachLink} to="/ph">
               <MenuItem>PH</MenuItem>
-
             </Link>
-
           </MenuList>
         </Menu>
       </Box>
       <Spacer />
       <Box pt={2} mr={5}>
-
-        {me.id ?
-
-          <Link as={ReachLink} to="/" onClick={logoutButton}>
-            <Button bg="brand.white" p={5}>
-              salir
-            </Button>
-          </Link> :
-
-          <Link as={ReachLink} to="/login">
-            <Button bg="brand.white" p={5}>
-
-              Iniciar Sesion
-            </Button>
-
-          </Link>}
-
-
+        {me.id ? <Link as={ReachLink} to="/" onClick={logoutButton}>
+          <Button bg="brand.white" p={5}>
+            salir
+          </Button>
+        </Link> : <Link as={ReachLink} to="/login">
+          <Button bg="brand.white" p={5}>
+            Iniciar Sesion
+          </Button>
+        </Link>}
       </Box>
     </Flex>
   );

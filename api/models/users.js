@@ -1,6 +1,5 @@
 const S = require("sequelize");
 const db = require("../db");
-//const Houses= require("./Houses")
 const bcrypt = require("bcrypt");
 
 class Users extends S.Model {
@@ -26,7 +25,7 @@ Users.init(
     salt: {
       type: S.STRING,
     },
-    admin:{
+    admin: {
       type: S.BOOLEAN,
     },
     fullname: {
@@ -49,7 +48,5 @@ Users.beforeCreate(async (users) => {
   const hash = await users.hash(users.password, salt);
   users.password = hash;
 });
-
-//Users.hasMany(Houses,{as:"inmueble"})
 
 module.exports = Users;

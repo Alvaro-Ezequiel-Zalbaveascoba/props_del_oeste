@@ -1,11 +1,13 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
 const intialState = {};
-export const setMessagesRequest = createAsyncThunk("SET_MESSAGES", (form) => {
-    return axios.post("/api/messages", form).then((res) => res.data);
+export const setMessagesRequest = createAsyncThunk("SET_MESSAGES", async (form) => {
+    const res = await axios.post("/api/messages", form);
+    return res.data;
 });
-export const setAllMessagesRequest = createAsyncThunk("SET_MESSAGES", () => {
-    return axios.get("/api/messages").then((res) => res.data);
+export const setAllMessagesRequest = createAsyncThunk("SET_MESSAGES", async () => {
+    const res = await axios.get("/api/messages");
+    return res.data;
 });
 
 

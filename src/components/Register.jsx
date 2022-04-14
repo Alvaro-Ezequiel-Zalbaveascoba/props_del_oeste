@@ -32,7 +32,6 @@ export default function Register() {
     const onChange = (e) => {
 
         setForm({ ...form, [e.target.name]: e.target.value });
-        console.log(form);
     };
 
     const onSubmit = (e) => {
@@ -41,14 +40,8 @@ export default function Register() {
             ;
     };
 
-
-
     return (
-        <Flex
-            pt={20}
-            minH={'90vh'}
-            align={'center'}
-            justify={'center'}>
+        <Flex pt={20} minH={'90vh'} align={'center'} justify={'center'}>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={10} px={4}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'} textAlign={'center'}>
@@ -56,10 +49,7 @@ export default function Register() {
                     </Heading>
                 </Stack>
                 <form onSubmit={onSubmit}>
-                    <Box
-                        rounded={'lg'}
-                        boxShadow={'lg'}
-                        p={8}>
+                    <Box rounded={'lg'} boxShadow={'lg'} p={8}>
                         <HStack>
                             <Box>
                                 <FormControl id="name" isRequired>
@@ -70,8 +60,7 @@ export default function Register() {
                             <Box>
                                 <FormControl id="lastName" isRequired>
                                     <FormLabel>Apellido</FormLabel>
-                                    <Input id="lastName" type="text" name="lastName"
-                                        onChange={onChange} />
+                                    <Input id="lastName" type="text" name="lastName" onChange={onChange} />
                                 </FormControl>
                             </Box>
                         </HStack>
@@ -88,10 +77,7 @@ export default function Register() {
                                     id="id"
                                     name="password"
                                     onChange={onChange}
-                                    type={show ? 'text' : 'password'}
-
-
-                                />
+                                    type={show ? 'text' : 'password'} />
                                 <InputRightElement width='4.5rem'>
                                     <Button h='1.75rem' size='sm' onClick={handleClick}>
                                         {show ? 'Hide' : 'Show'}
@@ -100,14 +86,9 @@ export default function Register() {
                             </InputGroup>
                         </FormControl>
 
-                        <Button
-                            mt={4}
-                            colorScheme='teal'
-                            type='submit'
-                        >
+                        <Button mt={4} colorScheme='teal' type='submit'>
                             Finalizar
                         </Button>
-
                     </Box>
                 </form>
             </Stack>
