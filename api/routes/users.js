@@ -20,6 +20,7 @@ router.get("/find/:id", (req, res) => {
     res.status(200).send(user);
   });
 });
+//edita un usuario
 router.put('/edit/:id',(req, res) => {
   Users.update(req.body, {
     where: {
