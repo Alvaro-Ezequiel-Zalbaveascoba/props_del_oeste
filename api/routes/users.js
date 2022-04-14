@@ -24,6 +24,17 @@ router.get("/find/:id", (req, res) => {
     res.status(200).send(user);
   });
 });
+router.put('/edit/:id',(req, res) => {
+  Users.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+    returning: true,
+  })
+    .then(([user]) => {
+      res.send(user[0]);
+    })
+})
 //Borra un usuario
 router.delete("/delete/:id", (req, res) => {
   Users.destroy({

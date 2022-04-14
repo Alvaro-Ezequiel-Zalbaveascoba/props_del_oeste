@@ -2,24 +2,24 @@ import { Link as ReachLink } from "react-router-dom";
 import { Box, Button, Flex, Link, Menu, MenuButton, MenuItem, MenuList, Spacer, Text } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogoutRequest, setUserMeRequest } from "../store/users";
+import { setLogoutRequest, setMeRequest } from "../store/me";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 
 export default function NavBar() {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.users);
+  const me = useSelector((state) => state.me);
 
   useEffect(() => {
-    dispatch(setUserMeRequest());
+    dispatch(setMeRequest());
   }, [dispatch]);
   const logoutButton = () => {
     dispatch(setLogoutRequest());
   };
   return (
 
-    <Flex pos="fixed" bg="tomato" p={1} w="100%">
+    <Flex pos="fixed" bg="tomato" w="100%">
 
       <Box w="50%" p={3} color="white">
         <Link as={ReachLink} to="/" >
@@ -28,13 +28,31 @@ export default function NavBar() {
         </Link>
       </Box>
       <Spacer />
+      {me.admin?<Box mt={2}><Menu>
+          <MenuButton bg="brand.white"as={Button} rightIcon={<ChevronDownIcon />}>
+            Admin
+          </MenuButton>
+          <MenuList>
+            <Link as={ReachLink} to="/users">
+              <MenuItem>Usuarios</MenuItem>
+
+            </Link>
+            <Link as={ReachLink} to="/messages">
+              <MenuItem>Mensajes</MenuItem>
+
+            </Link>
+
+          </MenuList>
+        </Menu>
+        </Box>:<></>}
+        <Spacer />
       <Box mt={2}>
         <Menu>
-          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+          <MenuButton bg="brand.white"as={Button} rightIcon={<ChevronDownIcon />}>
             Categorias
           </MenuButton>
           <MenuList>
-          <Link as={ReachLink} to="/">
+            <Link as={ReachLink} to="/">
               <MenuItem>Todas</MenuItem>
 
             </Link>
@@ -46,22 +64,29 @@ export default function NavBar() {
               <MenuItem>PH</MenuItem>
 
             </Link>
-            
+
           </MenuList>
         </Menu>
       </Box>
       <Spacer />
-      <Box w="20%" pt={2} pr={5}>
-        <Button bg="brand.white" p={5}>
-          {user.id ?
-            <Link as={ReachLink} to="/" onClick={logoutButton}>
-              salir
-            </Link> :
+      <Box pt={2} mr={5}>
 
-            <Link as={ReachLink} to="/login">
+        {me.id ?
+
+          <Link as={ReachLink} to="/" onClick={logoutButton}>
+            <Button bg="brand.white" p={5}>
+              salir
+            </Button>
+          </Link> :
+
+          <Link as={ReachLink} to="/login">
+            <Button bg="brand.white" p={5}>
+
               Iniciar Sesion
-            </Link>}
-        </Button>
+            </Button>
+
+          </Link>}
+
 
       </Box>
     </Flex>

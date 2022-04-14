@@ -26,6 +26,9 @@ Users.init(
     salt: {
       type: S.STRING,
     },
+    admin:{
+      type: S.BOOLEAN,
+    },
     fullname: {
       type: S.VIRTUAL,
       get() {

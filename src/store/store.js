@@ -1,13 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import logger from "redux-logger"
-import usersReducer from "./users"
+import meReducer from "./me"
 import housesReducer from "./houses"
+import messagesReducer from "./messages"
+import usersReducer from "./users"
 
 const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
     reducer:{
-        users:usersReducer,
-        houses:housesReducer
+        me:meReducer,
+        houses:housesReducer,
+        messages:messagesReducer,
+        users:usersReducer
     }
 })
 

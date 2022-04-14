@@ -5,22 +5,25 @@ import { Link as ReachLink } from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setHousesRequest } from '../store/houses';
+import { setDeleteHouseRequest, setOneHouseRequest } from '../store/houses';
 
 export default function DetailsHouse() {
     const dispatch = useDispatch();
     const houses = useSelector((state) => state.houses);
+    const me=useSelector((state) => state.me)
     const { id } = useParams();
-    const idH = id - 1;
     console.log(houses);
     useEffect(() => {
-        dispatch(setHousesRequest());
-    }, [dispatch]);
+        dispatch(setOneHouseRequest(id));
+    }, [dispatch, id]);
+    const handleClick = () => {
+        dispatch(setDeleteHouseRequest(id))
+      };
     return (
-        <Flex spacing={250} mt={100} boxSize="xl" h="60%" p={0} borderWidth='1px' borderRadius='lg' overflow='hidden' w="70%">
-            {houses.length>0?
+        <Flex spacing={250} mt={100} mb={50} boxSize="xl" h="60%" p={0} borderWidth='1px' borderRadius='lg' overflow='hidden' w="70%">
+            {houses.id?
             <HStack >
-                <Image boxSize="lg" src={houses[idH].img} alt={houses[idH].img} />
+                <Image boxSize="lg" src={houses.img} alt={houses.img} />
 
                 <Box>
                     <Box p='6' align="left">
@@ -36,7 +39,7 @@ export default function DetailsHouse() {
                                 textTransform='uppercase'
                                 ml='2'
                             >
-                                {houses[idH].typesofhouseId === 1 ? "Casa" : "Ph"} - {houses[idH].available === true ? "Disponible" : "No Disponible"}
+                                {houses.typesofhouseId === 1 ? "Casa" : "Ph"} - {houses.available === true ? "Disponible" : "No Disponible"}
                             </Box>
                         </Box>
 
@@ -47,27 +50,32 @@ export default function DetailsHouse() {
                             lineHeight='tight'
                             isTruncated
                         >
-                            {houses[idH].name} - {houses[idH].ubication}
+                            {houses.name} - {houses.ubication}
                         </Box>
 
                         <Box>
-                            {houses[idH].price}
+                            {houses.price}
                             <Box as='span' color='gray.600' fontSize='sm'>
                                 / Pesos
                             </Box>
                         </Box>
-                        <Text>{houses[idH].description}</Text>
+                        <Text>{houses.description}</Text>
                     </Box>
                     <Box mb={5} p={5}>
+                        {me.admin!==true?
+                            <Link as={ReachLink} to="/checkout">
                         <Button colorScheme='teal' type='submit'>
 
-                            <Link as={ReachLink} to="/checkout">
-
-                                Comprar
-                            </Link>
-
-
+                                Contactar
                         </Button>
+                            </Link>: <Link as={ReachLink} to="/">
+                        <Button colorScheme='teal' type='submit'onClick={handleClick}>
+
+                                Borrar
+                        </Button>
+                            </Link>}
+
+
                     </Box>
 
 

@@ -20,7 +20,7 @@ export default function GridH() {
 
         }else if(path==="/casas"){
         dispatch(setHousesTypesRequest(1))}
-        else{dispatch(setHousesTypesRequest(2))} 
+        else if(path==="/ph"){dispatch(setHousesTypesRequest(2))} 
         ;
     }, [dispatch, path]);
   return (

@@ -24,6 +24,12 @@ Houses.init(
     available: {
       type: S.BOOLEAN,
     },
+    truncate:{
+      type: S.VIRTUAL,
+      get(){
+          return `${this.description.slice(0,35)}...`
+      }
+  }
   },
   {
     sequelize: db,

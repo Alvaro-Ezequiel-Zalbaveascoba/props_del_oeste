@@ -9,10 +9,20 @@ export const setHousesTypesRequest = createAsyncThunk("SET_TYPES", async (id) =>
     const res = await axios.get(`/api/houses/typesofhouse/${id}`);
     return res.data;
 })
+export const setOneHouseRequest = createAsyncThunk("SET_ONEHOUSE", async (id) => {
+    const res = await axios.get(`/api/Houses/find/${id}`);
+    return res.data;
+})
+export const setDeleteHouseRequest = createAsyncThunk("SET_DELETE_HOUSE", async (id) => {
+    const res = await axios.delete(`/api/Houses/delete/${id}`);
+    return res.data;
+})
 
 
 const usersReducer = createReducer(intialState, {
     [setHousesRequest.fulfilled]: (_state, action) => action.payload,
     [setHousesTypesRequest.fulfilled]:(_state, action)=> action.payload,
+    [setOneHouseRequest.fulfilled]:(_state, action)=> action.payload,
+    [setDeleteHouseRequest]:(_state, action)=> action.payload
 })
 export default usersReducer

@@ -1,5 +1,6 @@
 TRUNCATE TABLE typesofhouses, houses;
 
+
 INSERT INTO typesofhouses (name) VALUES ('Casa');
 INSERT INTO typesofhouses (name) VALUES ('Ph');
 

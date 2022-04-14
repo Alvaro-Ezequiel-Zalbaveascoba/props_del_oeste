@@ -1,10 +1,14 @@
 const Houses=require("./houses");
 const Users=require("./users")
 const Typesofhouses=require("./typesofhouses")
+const Messages=require("./messages")
 
-Houses.belongsTo(Users,{as:"tenant"})
+/* Houses.belongsTo(Users,{as:"tenant"}) */
 Houses.belongsTo(Typesofhouses)
+Messages.belongsTo(Houses,{as:"house"})
+Messages.belongsTo(Users,{as:"interested"})
 
 
 
-module.exports={Houses,Users,Typesofhouses}; 
+
+module.exports={Houses,Users,Typesofhouses,Messages}; 

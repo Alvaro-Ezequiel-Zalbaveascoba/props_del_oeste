@@ -5,7 +5,6 @@ import {
     Input,
     InputGroup,
     InputRightElement,
-    useColorModeValue,
     Button,
     HStack,
     Box,
@@ -14,7 +13,7 @@ import {
     Heading,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { setRegisterRequest } from "../store/users";
+import { setRegisterRequest } from "../store/me";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -49,8 +48,7 @@ export default function Register() {
             pt={20}
             minH={'90vh'}
             align={'center'}
-            justify={'center'}
-            bg={useColorModeValue('gray.50', 'gray.800')}>
+            justify={'center'}>
             <Stack spacing={8} mx={'auto'} maxW={'lg'} py={10} px={4}>
                 <Stack align={'center'}>
                     <Heading fontSize={'4xl'} textAlign={'center'}>
@@ -60,7 +58,6 @@ export default function Register() {
                 <form onSubmit={onSubmit}>
                     <Box
                         rounded={'lg'}
-                        bg={useColorModeValue('white', 'gray.700')}
                         boxShadow={'lg'}
                         p={8}>
                         <HStack>
